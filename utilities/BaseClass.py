@@ -29,3 +29,11 @@ class BaseClass:
 
         sel = Select(locator)
         sel.select_by_visible_text(text)
+
+    def selectCalenderToDate(self, selectDate):
+        allDate = self.driver.find_elements(By.XPATH, "//table[@class='ui-datepicker-calendar']//a")
+        for date in allDate:
+            actualDate = int(date.text)
+            if actualDate == selectDate:
+                date.click()
+                break
